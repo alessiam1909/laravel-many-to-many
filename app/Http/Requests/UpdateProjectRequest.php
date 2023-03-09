@@ -28,7 +28,8 @@ class UpdateProjectRequest extends FormRequest
             'content' => ['nullable'],
             'slug' => ['required', 'max:100'],
             'image' => ['required' , 'max:400'],
-            'type_id' => ['nullable', 'exists:types,id']
+            'type_id' => ['nullable', 'exists:types,id'],
+            'technologies' => ['nullable', 'exists:technologies,id']
         ];
     }
 
@@ -41,7 +42,8 @@ class UpdateProjectRequest extends FormRequest
             'slug.max' => 'Lo slug può avere massimo 100 caratteri!',
             'image.required' => 'Immagine obbligatoria!',
             'image.max' => 'Il link immagine può avere massimo 400 caratteri!',
-            'type_id ' => 'Tipologia non valida'
+            'type_id ' => 'Tipologia non valida',
+            'technologies' => 'Tecnologia non valida'
             
         ];
     }

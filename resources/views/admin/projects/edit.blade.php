@@ -55,6 +55,23 @@
                 @error('type_id')
                 <div class="text-danger">{{$message}}</div>
                 @enderror
+                <div class="form-group my-3">
+                    <label class="control-label">Tecnologie: </label>
+                    @foreach ($technologies as $technology)
+                        <div>
+                            @if ($errors->any())
+                                <input type="checkbox" value="{{ $technology->id }}" name="technologies[]" {{ in_array($technology->id, old('technologies', [])) ? 'checked' : '' }}>
+                                <label class="form-check-label">{{ $technology->name }}</label>
+                            @else
+                            <input type="checkbox" value="{{ $technology->id }}" name="technologies[]" {{ $project->technologies->contains($technology) ? 'checked' : ''  }}>
+                            <label class="form-check-label">{{ $technology->name }}</label>
+                            @endif
+                        </div>
+                    @endforeach
+                </div>
+                @error('technology_id')
+                <div class="text-danger">{{$message}}</div>
+                @enderror
                 <div class="mb-3 form-group">
                     <label for="image" class="control-label">Url immagine: </label>
                     <input type="text" class="form-control" id="image" name="image" value="{{old('title') ?? $project->image}}">

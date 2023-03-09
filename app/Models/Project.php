@@ -3,6 +3,7 @@
 namespace App\Models;
 use Illuminate\Support\Str;
 use App\Models\Type;
+use App\Models\Technology;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;

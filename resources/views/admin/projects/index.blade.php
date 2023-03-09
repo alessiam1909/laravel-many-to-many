@@ -18,6 +18,7 @@
                               @else
                                 Tipologia non disponibile
                               @endif</p>
+                              <p class="card-text"> </p>
                             <p class="card-text my-4"><small class="text-muted">Last updated 3 mins ago</small></p>
                             <a href="{{route('admin.projects.edit', ['project' =>$project->slug])}}" class="btn btn-md btn-square btn-warning">
                                 <i class="fa-solid fa-pen"></i>

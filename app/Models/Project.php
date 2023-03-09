@@ -10,7 +10,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Project extends Model
 {
-    protected $fillable = ['title', 'content', 'slug', 'image', 'type_id'];
+    protected $fillable = ['title', 'content', 'slug', 'image', 'type_id', 'technology_id'];
     use HasFactory;
 
     public static function createSlug($title){

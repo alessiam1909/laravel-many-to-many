@@ -53,6 +53,18 @@
                 @error('type_id')
                 <div class="text-danger">{{$message}}</div>
                 @enderror
+                <div class="form-group my-3">
+                    <label class="control-label">Tecnologie: </label>
+                    @foreach ($technologies as $technology)
+                    <div>
+                        <input type="checkbox" value="{{ $technology->id }}" name="technologies[]">
+                        <label class="form-check-label">{{ $technology->name }}</label>
+                    </div>
+                    @endforeach
+                </div>
+                @error('technology_id')
+                <div class="text-danger">{{$message}}</div>
+                @enderror
                 <div class="mb-3 form-group">
                     <label for="image" class="control-label">Url immagine: </label>
                     <input type="text" class="form-control" id="image" name="image" placeholder="Inserisci l'Url dell'immagine">

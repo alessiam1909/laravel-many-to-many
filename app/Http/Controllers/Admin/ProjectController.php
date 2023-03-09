@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\Project;
 use App\Models\Type;
+use App\Models\Technology;
 use App\Http\Requests\StoreProjectRequest;
 use App\Http\Requests\UpdateProjectRequest;
 use Illuminate\Support\Facades\Auth;
@@ -17,8 +18,9 @@ class ProjectController extends Controller
      */
     public function index()
     {
+        $technologies = Technology::all();
         $projects = Project::all();
-        return view('admin.projects.index', compact('projects'));
+        return view('admin.projects.index', compact('projects', 'technologies'));
     }
 
     /**
@@ -28,8 +30,9 @@ class ProjectController extends Controller
      */
     public function create()
     {
+        $technologies = Technology::all();
         $types = Type::all();
-        return view('admin.projects.create', compact('types'));
+        return view('admin.projects.create', compact('types', 'technologies'));
     }
 
     /**
@@ -44,6 +47,9 @@ class ProjectController extends Controller
         $slug = Project::createSlug($request->title, '-');
         $form_data['slug'] = $slug;
         $newProject = Project::create($form_data);
+        if($request->has('technologies')){
+            $newProject->technologies()->attach($request->technologies);
+        }
         return redirect()->route('admin.projects.index');
     }
 

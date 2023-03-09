@@ -13,6 +13,13 @@
                   <p class="">{{$project->content}}</p>
                   <h5>Tipologia:</h5>
                   <p>{{ $project->type ?  $project->type->name : 'Senza tipologia'}}</p>
+                  <h5>Tecnologie</h5>
+                        @forelse ($project->technologies as $item)
+                            <p>{{ $item->name }}</p>
+                            @empty
+                            Nessuna tecnologia utilizzata
+
+                        @endforelse
                   <div class="contents-show">
                       <a href="{{route('admin.projects.edit', ['project' =>$project->slug])}}" class="btn btn-sm btn-square btn-warning">
                           <i class="fa-solid fa-pen"></i>

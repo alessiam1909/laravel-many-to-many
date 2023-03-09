@@ -18,6 +18,15 @@
                               @else
                                 Tipologia non disponibile
                               @endif</p>
+                            <p>Tecnologie:
+                                @forelse ($project->technologies as $technology)
+                                {{ $loop->first ? '' : ', ' }}
+                                <span>{{ $technology->name }}</span>
+                                @empty
+                                Nessuna tecnologia utilizzata
+    
+                                @endforelse
+                            </p>
                               <p class="card-text"> </p>
                             <p class="card-text my-4"><small class="text-muted">Last updated 3 mins ago</small></p>
                             <a href="{{route('admin.projects.edit', ['project' =>$project->slug])}}" class="btn btn-md btn-square btn-warning">
